@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#031127">
+<meta name="description" content="SalesBridge helps B2B companies build predictable sales pipelines through targeted lead generation, prospecting and appointment setting.">
+<title>SalesBridge — B2B Sales Outsourcing & Lead Generation</title>
+<style>
+:root{--bg:#020b1d;--panel:#071a36;--panel2:#0a2345;--blue:#126cff;--blue2:#1d8bff;--text:#f7f9ff;--muted:#b9c7db;--line:rgba(255,255,255,.12);--max:1320px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 72% 18%,#0b3978 0,transparent 34%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{text-decoration:none;color:inherit}.wrap{max-width:var(--max);margin:auto;padding:0 28px}
+header{height:86px;border-bottom:1px solid var(--line);background:rgba(1,8,22,.92);backdrop-filter:blur(16px);position:sticky;top:0;z-index:20}
+.nav{height:100%;display:flex;align-items:center;gap:34px}.brand{display:flex;align-items:center;margin-right:auto}.full-logo{width:250px;height:auto;display:block}.mark{width:58px;height:42px;object-fit:contain}.brand-name{font-weight:850;letter-spacing:-1.4px;font-size:25px}.brand-name span{color:var(--blue)}
+.brand small{display:block;font-size:8px;letter-spacing:.35px;color:#dce7f7;margin-top:2px}
+.links{display:flex;align-items:center;gap:30px;color:#f2f5fb;font-size:16px}.links a{opacity:.94}.links a:hover{color:#42a0ff}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:linear-gradient(135deg,#1375ff,#0862e9);padding:14px 24px;border-radius:12px;font-weight:800;box-shadow:0 12px 32px rgba(15,105,255,.28);white-space:nowrap}
+.menu{display:none;background:none;border:0;color:white;font-size:30px}
+.hero{padding:42px 0 22px}.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:28px;min-height:540px}
+.badge{display:inline-block;border:1px solid rgba(58,157,255,.8);border-radius:999px;padding:10px 17px;color:#eef5ff;font-size:15px;margin-bottom:25px}
+h1{font-size:clamp(52px,6vw,82px);line-height:.98;letter-spacing:-4px;margin:0 0 26px;font-weight:900;max-width:720px}h1 span{color:#1676ff}
+.lead{font-size:21px;line-height:1.55;color:#d0dced;max-width:690px;margin:0 0 28px}.actions{display:flex;gap:16px;flex-wrap:wrap}.outline{border:1px solid #b8c6d9;background:rgba(3,15,34,.45);box-shadow:none}
+.hero-img{width:100%;height:500px;object-fit:cover;border-radius:22px;border:1px solid rgba(145,183,228,.25);box-shadow:0 28px 70px rgba(0,0,0,.35);object-position:center}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);margin-top:18px;border:1px solid var(--line);background:rgba(7,25,51,.88);border-radius:16px;padding:16px 28px}.metric{display:flex;align-items:center;gap:18px;padding:14px 28px;border-right:1px solid var(--line)}.metric:last-child{border:0}.icon{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#0b4ecb;color:#fff;font-size:25px}.metric b{font-size:18px}.metric p{margin:3px 0 0;color:var(--muted)}
+section{padding:58px 0}.section-title{text-align:center;font-size:36px;margin:0 0 8px}.section-sub{text-align:center;color:var(--muted);margin:0 0 30px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(8,29,59,.95),rgba(4,18,39,.95));border-radius:13px;padding:22px;min-height:140px}.card .icon{width:48px;height:48px;margin-bottom:15px;font-size:21px}.card h3{margin:0 0 6px;font-size:17px}.card p{margin:0;color:#b7c5d9;line-height:1.45;font-size:14px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.about-box{border:1px solid var(--line);background:rgba(8,25,51,.8);border-radius:18px;padding:34px}.about h2{font-size:40px;margin:0 0 14px}.about p{color:var(--muted);line-height:1.7}.checks{display:grid;gap:13px;margin-top:22px}.check{display:flex;gap:10px}.check b{color:#fff}.check span{color:#1d86ff;font-weight:900}
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.price{position:relative;border:1px solid var(--line);background:#061936;border-radius:16px;padding:28px}.price.pop{border-color:#1978ff;box-shadow:0 18px 45px rgba(0,92,255,.18)}.tag{position:absolute;right:18px;top:15px;background:#1674ff;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800}.price h3{margin:0;font-size:22px}.price .amount{font-size:38px;font-weight:900;margin:18px 0}.price .amount small{font-size:14px;color:var(--muted);font-weight:500}.price ul{padding:0;margin:0;list-style:none;display:grid;gap:10px;color:#c1cee0;font-size:14px}.price li:before{content:"✓";color:#2b91ff;font-weight:900;margin-right:8px}
+footer{border-top:1px solid var(--line);padding:34px 0;color:#93a5bd}.foot{display:flex;justify-content:space-between;gap:20px}.wa{position:fixed;right:20px;bottom:20px;z-index:30;background:#0c7cff;color:#fff;border-radius:999px;padding:14px 20px;font-weight:800;box-shadow:0 15px 35px rgba(0,80,255,.35)}
+
+/* Booking modal */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,5,18,.78);backdrop-filter:blur(8px);z-index:100;align-items:center;justify-content:center;padding:18px}
+.modal.show{display:flex}.modal-box{width:min(560px,100%);max-height:92vh;overflow:auto;background:linear-gradient(160deg,#0a2347,#04132b);border:1px solid rgba(87,157,255,.35);border-radius:20px;padding:28px;box-shadow:0 30px 90px rgba(0,0,0,.55);position:relative}
+.modal-close{position:absolute;right:16px;top:12px;border:0;background:transparent;color:#dce9fb;font-size:30px;cursor:pointer}
+.modal-box h2{margin:0 40px 7px 0;font-size:30px}.modal-box>p{color:#aebfd7;margin:0 0 22px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:13px;font-weight:750;color:#dce7f6}.field input,.field select{width:100%;border:1px solid rgba(164,193,230,.25);background:#06162f;color:#fff;border-radius:10px;padding:13px 12px;font:inherit;outline:none}.field input:focus,.field select:focus{border-color:#2482ff;box-shadow:0 0 0 3px rgba(36,130,255,.12)}.slot-note{font-size:12px;color:#91a8c7;margin-top:-4px}.form-submit{width:100%;margin-top:18px;border:0;cursor:pointer;font:inherit}.booking-success{display:none;text-align:center;padding:18px 5px}.booking-success h3{font-size:25px;margin:10px 0}.booking-success p{color:#b8c8dc;line-height:1.6}.success-icon{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;margin:auto;background:#0b63d9;font-size:28px}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.modal-box{padding:24px 18px}}
+
+@media(max-width:1050px){.links{gap:18px}.cards{grid-template-columns:repeat(2,1fr)}.hero-grid{grid-template-columns:1fr}.hero-img{height:420px}.metrics{grid-template-columns:1fr}.metric{border-right:0;border-bottom:1px solid var(--line)}.metric:last-child{border-bottom:0}}
+@media(max-width:760px){header{height:72px}.wrap{padding:0 18px}.full-logo{width:205px}.links,.nav>.cta{display:none}.menu{display:block}.hero{padding-top:28px}.hero-grid{min-height:auto;gap:28px}.badge{font-size:13px;margin-bottom:18px}h1{font-size:50px;letter-spacing:-2.8px}.lead{font-size:17px}.hero-img{height:300px}.metrics{padding:8px 12px}.metric{padding:15px 8px}.about{grid-template-columns:1fr}.pricing{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.section-title{font-size:30px}.foot{flex-direction:column}.wa{right:14px;bottom:14px;padding:12px 16px}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap nav">
+<a class="brand" href="#home" aria-label="SalesBridge home">
+<img class="full-logo" src="salesbridge-logo.png" alt="SalesBridge — Connecting Businesses. Creating Opportunities.">
+</a>
+<nav class="links">
+<a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#how">How It Works</a><a href="#why">Why Us</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a>
+</nav>
+<a class="cta" href="#" onclick="openBooking(event)">☎ &nbsp;Book a Call</a>
+<button class="menu" aria-label="Open menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
+</div>
+</header>
+
+<main id="home">
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<div class="badge">B2B Sales Outsourcing &amp; Lead Generation</div>
+<h1>Turn Prospects<br><span>Into Opportunities.</span></h1>
+<p class="lead">SalesBridge helps B2B companies build predictable sales pipelines through targeted lead generation, prospecting and appointment setting.</p>
+<div class="actions">
+<a class="cta" href="#" onclick="openBooking(event)">▣ &nbsp; Book a Free 15-Minute Call →</a>
+<a class="cta outline" href="https://wa.me/919023159676">◉ &nbsp; Chat on WhatsApp</a>
+</div>
+</div>
+<div><img class="hero-img" src="hero-clean.jpg" alt="Business handshake representing growth and partnership"></div>
+</div>
+
+<div class="wrap metrics">
+<div class="metric"><div class="icon">👥</div><div><b>More Leads</b><p>Qualified prospects</p></div></div>
+<div class="metric"><div class="icon">▣</div><div><b>More Meetings</b><p>Sales opportunities</p></div></div>
+<div class="metric"><div class="icon">↗</div><div><b>More Growth</b><p>For your business</p></div></div>
+</div>
+</section>
+
+<section id="services">
+<div class="wrap">
+<h2 class="section-title">Our Services</h2><p class="section-sub">We act as your outsourced sales development team.</p>
+<div class="cards">
+<div class="card"><div class="icon">⌕</div><h3>Lead Generation</h3><p>Find ideal prospects for your business.</p></div>
+<div class="card"><div class="icon">●</div><h3>Prospect Research</h3><p>Identify decision-makers &amp; key contacts.</p></div>
+<div class="card"><div class="icon">in</div><h3>LinkedIn Outreach</h3><p>Targeted &amp; personalized messaging.</p></div>
+<div class="card"><div class="icon">✉</div><h3>Email Outreach</h3><p>Multi-touch email campaigns.</p></div>
+<div class="card"><div class="icon">☎</div><h3>Lead Qualification</h3><p>Initial calls &amp; screening.</p></div>
+<div class="card"><div class="icon">▣</div><h3>Appointment Setting</h3><p>Book qualified meetings.</p></div>
+<div class="card"><div class="icon">▥</div><h3>Sales Pipeline</h3><p>Track &amp; manage your pipeline.</p></div>
+<div class="card"><div class="icon">▤</div><h3>Reporting</h3><p>Weekly performance updates.</p></div>
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="wrap about">
+<div class="about-box"><h2>About SalesBridge</h2><p><strong>SalesBridge is a B2B sales outsourcing and lead generation company helping businesses build predictable sales pipelines and create new growth opportunities.</strong></p><p>We work as an extension of your sales team — identifying the right prospects, connecting with decision-makers, qualifying opportunities and booking meaningful sales meetings.</p><p>Instead of spending valuable time searching for prospects and managing cold outreach, SalesBridge handles the early stages of the sales process so your team can focus on closing deals and growing the business.</p><div class="checks"><div class="check"><span>✓</span><b>Targeted B2B lead generation</b></div><div class="check"><span>✓</span><b>Prospect &amp; decision-maker research</b></div><div class="check"><span>✓</span><b>LinkedIn &amp; multi-channel outreach</b></div><div class="check"><span>✓</span><b>Email outreach &amp; lead qualification</b></div><div class="check"><span>✓</span><b>Appointment setting &amp; pipeline support</b></div><div class="check"><span>✓</span><b>Transparent reporting</b></div></div></div>
+<div class="about-box" id="how"><h2>How It Works</h2><p>1. Identify your ideal customers.<br><br>2. Connect with decision-makers.<br><br>3. Qualify prospects through focused conversations.<br><br>4. Book qualified sales meetings.<br><br>5. Keep the pipeline moving and grow.</p></div>
+</div>
+</section>
+
+<section id="why"><div class="wrap"><h2 class="section-title">Why SalesBridge?</h2><p class="section-sub">A practical sales development partner for growing B2B teams.</p></div></section>
+
+<section id="pricing"><div class="wrap"><h2 class="section-title">Our Packages</h2><p class="section-sub">Simple packages designed around your growth stage.</p>
+<div class="pricing">
+<div class="price"><h3>Starter</h3><div class="amount">₹7,500 <small>/month</small></div><ul><li>Targeted prospect research</li><li>Multi-channel outreach</li><li>Lead qualification</li><li>Meeting booking</li><li>Weekly report</li></ul></div>
+<div class="price pop"><div class="tag">Most Popular</div><h3>Growth</h3><div class="amount">₹15,000 <small>/month</small></div><ul><li>Extended prospect list</li><li>Multi-channel outreach</li><li>Lead qualification &amp; follow-ups</li><li>Appointment setting</li><li>Pipeline tracking</li><li>Weekly performance report</li></ul></div>
+<div class="price"><h3>Scale</h3><div class="amount">₹25,000 <small>/month</small></div><ul><li>Large-scale prospecting</li><li>Advanced outreach strategy</li><li>Lead qualification</li><li>CRM/pipeline management</li><li>Weekly strategy review</li><li>Dedicated account support</li></ul></div>
+</div></div></section>
+
+<section id="contact"><div class="wrap"><div class="about-box" style="text-align:center"><h2>Let's Talk</h2><p>Ready to grow your sales pipeline? Book a free 15-minute call or message SalesBridge on WhatsApp.</p><div class="actions" style="justify-content:center"><a class="cta" href="https://wa.me/919023159676">Chat on WhatsApp</a><a class="cta outline" href="tel:+919023159676">Call +91 90231 59676</a></div></div></div></section>
+
+<!-- Free call booking modal -->
+<div class="modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+  <div class="modal-box">
+    <button class="modal-close" type="button" aria-label="Close" onclick="closeBooking()">×</button>
+    <div id="bookingFormWrap">
+      <h2 id="bookingTitle">Book a Free 15-Minute Call</h2>
+      <p>Tell us a little about your business and choose a convenient date and time.</p>
+      <form id="bookingForm" action="https://formspree.io/f/xppabwdw" method="POST">
+        <input type="hidden" name="_subject" value="New SalesBridge Free Call Booking Request">
+        <div class="form-grid">
+          <div class="field">
+            <label for="company">Company / Business Name *</label>
+            <input id="company" name="company" type="text" placeholder="Your company name" required>
+          </div>
+          <div class="field">
+            <label for="name">Your Name *</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email Address *</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required>
+          </div>
+          <div class="field">
+            <label for="mobile">Mobile Number *</label>
+            <input id="mobile" name="mobile" type="tel" inputmode="tel" placeholder="+91..." required>
+          </div>
+          <div class="field">
+            <label for="date">Preferred Date *</label>
+            <input id="date" name="date" type="date" required>
+          </div>
+          <div class="field">
+            <label for="time">Preferred Time Slot *</label>
+            <select id="time" name="time" required>
+              <option value="">Choose a slot</option>
+              <option>10:00 AM – 10:15 AM</option>
+              <option>11:00 AM – 11:15 AM</option>
+              <option>12:00 PM – 12:15 PM</option>
+              <option>2:00 PM – 2:15 PM</option>
+              <option>3:00 PM – 3:15 PM</option>
+              <option>4:00 PM – 4:15 PM</option>
+              <option>5:00 PM – 5:15 PM</option>
+              <option>6:00 PM – 6:15 PM</option>
+            </select>
+          </div>
+          <div class="field full">
+            <div class="slot-note">India time (IST). Your requested slot will be sent to SalesBridge for confirmation.</div>
+          </div>
+        </div>
+        <button class="cta form-submit" type="submit">Request My Free Call →</button>
+      </form>
+    </div>
+    <div class="booking-success" id="bookingSuccess">
+      <div class="success-icon">✓</div>
+      <h3>Request Ready!</h3>
+      <p>Your booking details have been prepared. WhatsApp will open so you can send the request directly to SalesBridge and receive confirmation.</p>
+      <a class="cta" id="sendBooking" href="#" target="_blank" rel="noopener" style="display:none">Send Booking on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<a class="wa" href="https://wa.me/919023159676">WhatsApp</a>
+<footer><div class="wrap foot"><div>© 2026 SalesBridge. All rights reserved.</div><div>Connecting Businesses. Creating Opportunities.</div></div></footer>
+<script>
+document.querySelectorAll('.links a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.links').classList.remove('open')));
+
+const modal = document.getElementById('bookingModal');
+const bookingForm = document.getElementById('bookingForm');
+const dateInput = document.getElementById('date');
+const bookingSuccess = document.getElementById('bookingSuccess');
+const bookingFormWrap = document.getElementById('bookingFormWrap');
+const sendBooking = document.getElementById('sendBooking');
+
+function openBooking(e){
+  if(e) e.preventDefault();
+  modal.classList.add('show');
+  document.body.style.overflow='hidden';
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate()+1);
+  dateInput.min = tomorrow.toISOString().split('T')[0];
+}
+function closeBooking(){
+  modal.classList.remove('show');
+  document.body.style.overflow='';
+}
+modal.addEventListener('click',e=>{if(e.target===modal) closeBooking();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeBooking();});
+
+bookingForm.addEventListener('submit', async function(e){
+  e.preventDefault();
+
+  const submitButton = bookingForm.querySelector('.form-submit');
+  submitButton.disabled = true;
+  submitButton.textContent = 'Submitting...';
+
+  try {
+    const response = await fetch(bookingForm.action, {
+      method: 'POST',
+      body: new FormData(bookingForm),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (!response.ok) throw new Error('Submission failed');
+
+    bookingFormWrap.style.display='none';
+    bookingSuccess.style.display='block';
+    bookingSuccess.querySelector('h3').textContent='Booking Request Received!';
+    bookingSuccess.querySelector('p').textContent='Thank you! Your request has been received by SalesBridge. We will confirm your selected date and time shortly.';
+    const sendBooking = document.getElementById('sendBooking');
+    if (sendBooking) sendBooking.style.display='none';
+  } catch (error) {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Request My Free Call →';
+    alert('We could not submit your request. Please check your internet connection and try again.');
+  }
+});
+</script>
+</body>
+</html>
