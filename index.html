@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SalesBridge helps B2B companies generate qualified leads, book sales meetings and build predictable sales pipelines.">
+  <title>SalesBridge | B2B Lead Generation & Sales Development</title>
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <style>
+    :root{
+      --navy:#071b3a;
+      --navy2:#0b2854;
+      --blue:#1267ff;
+      --blue2:#3f8cff;
+      --sky:#eaf3ff;
+      --text:#12233f;
+      --muted:#64748b;
+      --line:#e5ebf4;
+      --white:#fff;
+      --bg:#f7faff;
+      --shadow:0 18px 55px rgba(8,34,75,.10);
+      --radius:22px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+      color:var(--text);background:#fff;line-height:1.6;
+    }
+    body.modal-open{overflow:hidden}
+    a{text-decoration:none;color:inherit}
+    button,input,select,textarea{font:inherit}
+    .container{width:min(1160px,92%);margin:auto}
+
+    header{
+      position:sticky;top:0;z-index:1000;
+      background:rgba(255,255,255,.94);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(229,235,244,.9)
+    }
+    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand img{height:46px;width:auto;display:block}
+    nav{display:flex;align-items:center;gap:25px}
+    nav a{font-size:14px;font-weight:700;color:#42526b}
+    nav a:hover{color:var(--blue)}
+    .nav-cta,.btn-primary{
+      background:var(--blue);color:#fff!important;border:0;
+      box-shadow:0 10px 25px rgba(18,103,255,.22)
+    }
+    .nav-cta{padding:11px 17px;border-radius:10px}
+    .menu{display:none;background:none;border:0;font-size:28px;color:var(--navy)}
+
+    .hero{
+      position:relative;overflow:hidden;color:#fff;
+      background:
+        radial-gradient(circle at 80% 20%,rgba(63,140,255,.28),transparent 32%),
+        linear-gradient(135deg,var(--navy),#0a3270 70%,#0e4eac);
+      padding:88px 0 72px
+    }
+    .hero:after{
+      content:"";position:absolute;inset:auto -10% -120px;
+      height:240px;background:#fff;border-radius:50% 50% 0 0/100% 100% 0 0
+    }
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:60px;position:relative;z-index:1}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 13px;border:1px solid rgba(255,255,255,.22);
+      background:rgba(255,255,255,.08);border-radius:999px;
+      font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+      margin-bottom:20px
+    }
+    .eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:#6fa8ff}
+    h1{font-size:clamp(44px,6vw,70px);line-height:1.02;letter-spacing:-2.8px;max-width:700px}
+    h1 span{color:#6fa8ff}
+    .hero-copy{font-size:18px;color:#d7e6ff;max-width:650px;margin:24px 0 30px}
+    .actions{display:flex;flex-wrap:wrap;gap:13px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 21px;border-radius:11px;font-weight:800;font-size:14px;cursor:pointer;border:0}
+    .btn-light{background:#fff;color:var(--navy)}
+    .btn-outline{border:1px solid rgba(255,255,255,.35);color:#fff;background:rgba(255,255,255,.06)}
+    .hero-panel{
+      background:rgba(255,255,255,.98);color:var(--text);
+      padding:28px;border-radius:26px;box-shadow:0 28px 70px rgba(0,0,0,.20)
+    }
+    .panel-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+    .panel-top strong{font-size:18px}
+    .status{font-size:11px;font-weight:800;color:#147b4a;background:#e7f8ef;padding:7px 10px;border-radius:999px}
+    .pipeline{display:grid;gap:12px}
+    .pipeline-row{display:flex;align-items:center;gap:13px;padding:15px;border:1px solid var(--line);border-radius:15px}
+    .pipeline-icon{width:40px;height:40px;border-radius:11px;background:var(--sky);display:grid;place-items:center;color:var(--blue);font-weight:900}
+    .pipeline-row strong{display:block;font-size:14px}
+    .pipeline-row small{color:var(--muted);font-size:12px}
+
+    .stats{margin-top:-25px;position:relative;z-index:5}
+    .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+    .stat{padding:25px;text-align:center;border-right:1px solid var(--line)}
+    .stat:last-child{border-right:0}
+    .stat strong{display:block;font-size:28px;color:var(--blue)}
+    .stat span{font-size:13px;color:var(--muted);font-weight:700}
+
+    section{padding:92px 0}
+    .section-head{text-align:center;max-width:720px;margin:0 auto 48px}
+    .section-kicker{font-size:12px;font-weight:900;color:var(--blue);letter-spacing:.12em;text-transform:uppercase;margin-bottom:9px}
+    .section-head h2{font-size:clamp(32px,4vw,46px);line-height:1.1;letter-spacing:-1.5px;margin-bottom:14px}
+    .section-head p{color:var(--muted);font-size:16px}
+
+    .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .service{
+      padding:26px;border:1px solid var(--line);border-radius:18px;background:#fff;
+      transition:.25s;box-shadow:0 6px 25px rgba(8,34,75,.035)
+    }
+    .service:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#cfe0ff}
+    .icon{width:46px;height:46px;border-radius:13px;background:var(--sky);color:var(--blue);display:grid;place-items:center;font-weight:900;font-size:18px;margin-bottom:19px}
+    .service h3{font-size:17px;margin-bottom:8px}
+    .service p{font-size:13px;color:var(--muted)}
+
+    .process{background:var(--bg)}
+    .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+    .step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:23px}
+    .step-no{font-size:12px;font-weight:900;color:var(--blue);margin-bottom:12px}
+    .step h3{font-size:17px;margin-bottom:7px}
+    .step p{font-size:13px;color:var(--muted)}
+
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .why-card{padding:27px;border-radius:19px;background:linear-gradient(145deg,#fff,#f7faff);border:1px solid var(--line)}
+    .why-card h3{font-size:17px;margin-bottom:8px}
+    .why-card p{font-size:13px;color:var(--muted)}
+
+    .about{background:var(--navy);color:#fff}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+    .about h2{font-size:clamp(34px,4vw,50px);line-height:1.08;letter-spacing:-1.7px;margin-bottom:20px}
+    .about p{color:#b9c9df;margin-bottom:15px}
+    .about-list{display:grid;gap:13px;margin-top:25px}
+    .about-list div{display:flex;gap:11px;align-items:flex-start;color:#dbe8fb;font-size:14px}
+    .check{color:#70a9ff;font-weight:900}
+
+    .pricing{background:#f7faff}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+    .price-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px;position:relative;box-shadow:0 8px 30px rgba(8,34,75,.04)}
+    .price-card.featured{border:2px solid var(--blue);box-shadow:0 20px 50px rgba(18,103,255,.13)}
+    .popular{position:absolute;right:20px;top:18px;background:var(--blue);color:#fff;padding:6px 10px;border-radius:999px;font-size:10px;font-weight:900}
+    .price-card h3{font-size:20px}
+    .price-card .sub{font-size:13px;color:var(--muted);margin:6px 0 20px}
+    .price{font-size:34px;font-weight:900;letter-spacing:-1px}
+    .price small{font-size:12px;color:var(--muted);font-weight:700}
+    .features{list-style:none;display:grid;gap:10px;margin:23px 0 26px}
+    .features li{font-size:13px;color:#526176;display:flex;gap:9px}
+    .features li:before{content:"✓";color:var(--blue);font-weight:900}
+    .price-btn{width:100%;border:0;cursor:pointer}
+
+    .contact{background:#fff}
+    .contact-box{
+      background:linear-gradient(135deg,var(--navy),#0b3c83);color:#fff;border-radius:28px;padding:58px;
+      display:grid;grid-template-columns:1fr auto;align-items:center;gap:35px
+    }
+    .contact-box h2{font-size:clamp(32px,4vw,46px);line-height:1.08;letter-spacing:-1.5px;margin-bottom:13px}
+    .contact-box p{color:#c8d7ed;max-width:680px}
+    .contact-info{display:grid;gap:11px;margin-top:20px;font-size:14px;color:#dbe8fb}
+    .contact-info a:hover{color:#fff}
+
+    footer{background:#050f22;color:#8ea1bb;padding:30px 0}
+    .footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    footer strong{color:#fff}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;background:rgba(3,13,29,.72);display:none;align-items:center;justify-content:center;padding:20px;z-index:3000}
+    .modal.show{display:flex}
+    .modal-card{width:min(720px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:24px;box-shadow:0 30px 90px rgba(0,0,0,.35);padding:30px;position:relative}
+    .close{position:absolute;right:18px;top:15px;border:0;background:#eef3fa;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:21px;color:#42526b}
+    .modal-card h2{font-size:28px;letter-spacing:-.7px;padding-right:45px}
+    .modal-card>p{color:var(--muted);font-size:14px;margin:5px 0 22px}
+    .selected-plan{display:none;background:var(--sky);color:var(--blue);padding:10px 13px;border-radius:10px;font-size:12px;font-weight:900;margin-bottom:15px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{display:grid;gap:6px}
+    .field.full{grid-column:1/-1}
+    .field label{font-size:12px;font-weight:800;color:#33445d}
+    .field input,.field select,.field textarea{width:100%;padding:12px 13px;border:1px solid #d9e1ec;border-radius:10px;outline:none;background:#fff;color:var(--text)}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(18,103,255,.10)}
+    .field textarea{min-height:90px;resize:vertical}
+    .submit{width:100%;margin-top:18px}
+    .form-note{font-size:11px;color:#7b8798;text-align:center;margin-top:9px}
+    .success{display:none;text-align:center;padding:35px 10px}
+    .success .success-icon{width:62px;height:62px;border-radius:50%;background:#e7f8ef;color:#14834e;display:grid;place-items:center;margin:0 auto 16px;font-size:28px;font-weight:900}
+    .success h3{font-size:24px;margin-bottom:7px}
+    .success p{color:var(--muted)}
+
+    @media(max-width:980px){
+      nav{display:none}
+      .menu{display:block}
+      nav.mobile-open{display:flex;position:absolute;top:78px;left:0;right:0;background:#fff;padding:20px;flex-direction:column;align-items:stretch;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+      .hero-grid,.about-grid{grid-template-columns:1fr}
+      .services-grid{grid-template-columns:repeat(2,1fr)}
+      .steps{grid-template-columns:repeat(2,1fr)}
+      .contact-box{grid-template-columns:1fr}
+    }
+    @media(max-width:650px){
+      .nav{height:70px}.brand img{height:40px}
+      .hero{padding:65px 0 55px}
+      h1{letter-spacing:-1.9px}
+      .hero-panel{padding:22px}
+      .stats-grid{grid-template-columns:1fr}
+      .stat{border-right:0;border-bottom:1px solid var(--line)}
+      .stat:last-child{border-bottom:0}
+      section{padding:70px 0}
+      .services-grid,.why-grid,.pricing-grid,.steps{grid-template-columns:1fr}
+      .form-grid{grid-template-columns:1fr}
+      .field.full{grid-column:auto}
+      .contact-box{padding:34px 25px}
+      .footer-row{flex-direction:column;text-align:center}
+      .actions .btn{width:100%}
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home" aria-label="SalesBridge home">
+      <img src="logo.png" alt="SalesBridge">
+    </a>
+    <nav id="mainNav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#process">How It Works</a>
+      <a href="#why">Why Us</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+      <a href="#" class="nav-cta book-call">Book a Call</a>
+    </nav>
+    <button class="menu" id="menuBtn" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">B2B SALES DEVELOPMENT & LEAD GENERATION</div>
+        <h1>Turn <span>Prospects</span> Into Opportunities.</h1>
+        <p class="hero-copy">
+          SalesBridge helps B2B companies generate qualified leads, connect with decision-makers,
+          book sales meetings and build a stronger, more predictable pipeline.
+        </p>
+        <div class="actions">
+          <a href="#" class="btn btn-light book-call">Book a Free 15-Minute Call</a>
+          <a href="https://wa.me/919023159676?text=Hello%20SalesBridge%2C%20I%27d%20like%20to%20discuss%20your%20sales%20services." class="btn btn-outline" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="hero-panel">
+        <div class="panel-top">
+          <strong>Your Sales Pipeline</strong>
+          <span class="status">GROWING</span>
+        </div>
+        <div class="pipeline">
+          <div class="pipeline-row"><div class="pipeline-icon">01</div><div><strong>Identify</strong><small>Find your ideal prospects</small></div></div>
+          <div class="pipeline-row"><div class="pipeline-icon">02</div><div><strong>Connect</strong><small>Reach the right decision-makers</small></div></div>
+          <div class="pipeline-row"><div class="pipeline-icon">03</div><div><strong>Qualify</strong><small>Focus on genuine opportunities</small></div></div>
+          <div class="pipeline-row"><div class="pipeline-icon">04</div><div><strong>Book</strong><small>Turn conversations into meetings</small></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="container stats-grid">
+      <div class="stat"><strong>More Leads</strong><span>Targeted prospecting</span></div>
+      <div class="stat"><strong>More Meetings</strong><span>Qualified conversations</span></div>
+      <div class="stat"><strong>More Growth</strong><span>Stronger sales pipelines</span></div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">What We Do</div>
+        <h2>Sales support built around your growth.</h2>
+        <p>From finding the right prospects to creating qualified meetings, SalesBridge supports the parts of outbound sales that keep your pipeline moving.</p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service"><div class="icon">◎</div><h3>Lead Generation</h3><p>Build targeted prospect lists based on your ideal customer profile and market.</p></article>
+        <article class="service"><div class="icon">⌕</div><h3>Prospect Research</h3><p>Research companies, roles and decision-makers so your outreach starts with better data.</p></article>
+        <article class="service"><div class="icon">in</div><h3>LinkedIn Outreach</h3><p>Use personalized LinkedIn prospecting to start relevant B2B conversations.</p></article>
+        <article class="service"><div class="icon">✉</div><h3>Email Outreach</h3><p>Plan and execute focused email campaigns designed to generate replies and opportunities.</p></article>
+        <article class="service"><div class="icon">✓</div><h3>Lead Qualification</h3><p>Separate genuine prospects from low-intent leads so your sales team spends time where it matters.</p></article>
+        <article class="service"><div class="icon">◷</div><h3>Appointment Setting</h3><p>Turn qualified conversations into sales meetings with the right decision-makers.</p></article>
+        <article class="service"><div class="icon">↗</div><h3>Sales Pipeline</h3><p>Help maintain consistent prospecting activity and a healthier flow of opportunities.</p></article>
+        <article class="service"><div class="icon">▥</div><h3>Reporting</h3><p>Clear activity and performance reporting so you know what is happening in your pipeline.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="process">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">Our Process</div>
+        <h2>A simple bridge from prospect to opportunity.</h2>
+        <p>We keep the process focused, measurable and aligned with your sales goals.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-no">01 — IDENTIFY</div><h3>Find</h3><p>Define your ideal customer and identify relevant prospects.</p></div>
+        <div class="step"><div class="step-no">02 — CONNECT</div><h3>Reach</h3><p>Start targeted conversations through the right channels.</p></div>
+        <div class="step"><div class="step-no">03 — ENGAGE</div><h3>Build Interest</h3><p>Use relevant messaging to understand the prospect's needs.</p></div>
+        <div class="step"><div class="step-no">04 — QUALIFY</div><h3>Prioritize</h3><p>Focus your sales team on opportunities with real potential.</p></div>
+        <div class="step"><div class="step-no">05 — BOOK</div><h3>Create Meetings</h3><p>Move qualified prospects into productive sales conversations.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">Why SalesBridge</div>
+        <h2>A practical extension of your sales team.</h2>
+        <p>We focus on quality conversations and measurable activity—not simply filling spreadsheets with leads.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card"><h3>Targeted Prospecting</h3><p>We focus on prospects that fit your ideal customer profile instead of generic lists.</p></div>
+        <div class="why-card"><h3>Personalized Outreach</h3><p>Relevant communication helps your business start better conversations with decision-makers.</p></div>
+        <div class="why-card"><h3>Quality Focus</h3><p>Qualification helps separate useful opportunities from low-intent contacts.</p></div>
+        <div class="why-card"><h3>Flexible Support</h3><p>Choose the level of sales-development support that matches your current stage.</p></div>
+        <div class="why-card"><h3>Transparent Reporting</h3><p>Know what outreach is happening, what is working and where opportunities are moving.</p></div>
+        <div class="why-card"><h3>Growth Focused</h3><p>The goal is a healthier pipeline that gives your sales team more opportunities to close.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div>
+        <div class="section-kicker" style="color:#70a9ff">About SalesBridge</div>
+        <h2>Building bridges between businesses and their next customers.</h2>
+      </div>
+      <div>
+        <p>SalesBridge is a B2B sales development company focused on helping businesses create new sales opportunities through targeted prospecting, outreach and appointment setting.</p>
+        <p>Our approach is simple: understand your ideal customer, find the right people, start relevant conversations and create qualified opportunities for your sales team.</p>
+        <div class="about-list">
+          <div><span class="check">✓</span><span>Built around your ideal customer profile</span></div>
+          <div><span class="check">✓</span><span>Focused on meaningful B2B conversations</span></div>
+          <div><span class="check">✓</span><span>Clear activity and pipeline visibility</span></div>
+          <div><span class="check">✓</span><span>Designed to scale with your business</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-kicker">Pricing</div>
+        <h2>Choose the level of support you need.</h2>
+        <p>Every business has different sales goals. Start with a conversation and we'll recommend the right approach.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <article class="price-card">
+          <h3>Starter</h3><div class="sub">For businesses testing outbound sales.</div>
+          <div class="price">₹7,500 <small>/ month</small></div>
+          <ul class="features">
+            <li>Targeted prospect research</li>
+            <li>Lead generation support</li>
+            <li>Basic outreach activity</li>
+            <li>Lead qualification</li>
+            <li>Monthly performance report</li>
+          </ul>
+          <button class="btn btn-primary price-btn book-call" data-plan="Starter">Book a Call</button>
+        </article>
+
+        <article class="price-card featured">
+          <span class="popular">MOST POPULAR</span>
+          <h3>Growth</h3><div class="sub">For businesses building a consistent pipeline.</div>
+          <div class="price">₹15,000 <small>/ month</small></div>
+          <ul class="features">
+            <li>Everything in Starter</li>
+            <li>LinkedIn & email outreach</li>
+            <li>Ongoing prospecting</li>
+            <li>Appointment-setting support</li>
+            <li>Regular pipeline reporting</li>
+          </ul>
+          <button class="btn btn-primary price-btn book-call" data-plan="Growth">Book a Call</button>
+        </article>
+
+        <article class="price-card">
+          <h3>Scale</h3><div class="sub">For businesses ready for broader sales support.</div>
+          <div class="price">₹25,000 <small>/ month</small></div>
+          <ul class="features">
+            <li>Everything in Growth</li>
+            <li>Higher outreach capacity</li>
+            <li>Dedicated sales-development support</li>
+            <li>Advanced qualification</li>
+            <li>Detailed reporting & review</li>
+          </ul>
+          <button class="btn btn-primary price-btn book-call" data-plan="Scale">Book a Call</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <div>
+          <div class="section-kicker" style="color:#70a9ff">Let's Talk</div>
+          <h2>Ready to build your sales pipeline?</h2>
+          <p>Tell us about your business and sales goals. We'll explore where SalesBridge can create the most value.</p>
+          <div class="contact-info">
+            <a href="tel:+919023159676">📞 +91 90231 59676</a>
+            <a href="mailto:hello@salesbridgehq.in">✉ hello@salesbridgehq.in</a>
+            <span>📍 Vadodara, Gujarat, India</span>
+          </div>
+        </div>
+        <div>
+          <a href="#" class="btn btn-light book-call">Book a Free Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div>© 2026 <strong>SalesBridge</strong>. All rights reserved.</div>
+    <div>B2B Lead Generation • Sales Development • Appointment Setting</div>
+  </div>
+</footer>
+
+<div class="modal" id="bookingModal" aria-hidden="true">
+  <div class="modal-card">
+    <button class="close" id="closeModal" aria-label="Close">×</button>
+
+    <div id="formArea">
+      <h2>Book a Free 15-Minute Call</h2>
+      <p>Tell us a little about your business and we'll review your request.</p>
+      <div class="selected-plan" id="selectedPlan"></div>
+
+      <form id="bookingForm" action="https://formspree.io/f/xppabwdw" method="POST">
+        <input type="hidden" name="_subject" value="New SalesBridge Call Request">
+        <input type="hidden" name="selected_package" id="selectedPackage" value="Not specified">
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Full Name *</label>
+            <input id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="company">Company / Business Name *</label>
+            <input id="company" name="company" required>
+          </div>
+          <div class="field">
+            <label for="email">Business Email *</label>
+            <input id="email" type="email" name="email" required>
+          </div>
+          <div class="field">
+            <label for="phone">Mobile / WhatsApp Number *</label>
+            <input id="phone" name="phone" type="tel" required>
+          </div>
+          <div class="field">
+            <label for="service">Service You're Interested In *</label>
+            <select id="service" name="service" required>
+              <option value="">Select a service</option>
+              <option>Lead Generation</option>
+              <option>Prospect Research</option>
+              <option>LinkedIn Outreach</option>
+              <option>Email Outreach</option>
+              <option>Lead Qualification</option>
+              <option>Appointment Setting</option>
+              <option>Complete Sales Development</option>
+              <option>Not Sure Yet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="date">Preferred Date *</label>
+            <input id="date" name="preferred_date" type="date" required>
+          </div>
+          <div class="field">
+            <label for="time">Preferred Time *</label>
+            <select id="time" name="preferred_time" required>
+              <option value="">Select a time</option>
+              <option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option>
+              <option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option>
+              <option>4:00 PM</option><option>5:00 PM</option><option>6:00 PM</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="budget">Current Sales Goal</label>
+            <select id="budget" name="sales_goal">
+              <option value="">Select one</option>
+              <option>Generate more leads</option>
+              <option>Book more meetings</option>
+              <option>Build outbound sales</option>
+              <option>Improve sales pipeline</option>
+              <option>Scale an existing sales process</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="message">Anything you'd like us to know?</label>
+            <textarea id="message" name="message" placeholder="Tell us briefly about your business, target customers or current challenge."></textarea>
+          </div>
+        </div>
+
+        <button class="btn btn-primary submit" id="submitBtn" type="submit">Request My Free Call</button>
+        <div class="form-note">Your information is used only to respond to your request.</div>
+      </form>
+    </div>
+
+    <div class="success" id="successArea">
+      <div class="success-icon">✓</div>
+      <h3>Request received!</h3>
+      <p>Thank you. Your SalesBridge call request has been submitted successfully. We'll contact you shortly to confirm the meeting.</p>
+      <button class="btn btn-primary" style="margin-top:20px" id="successClose">Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('bookingModal');
+  const closeModal = document.getElementById('closeModal');
+  const successClose = document.getElementById('successClose');
+  const formArea = document.getElementById('formArea');
+  const successArea = document.getElementById('successArea');
+  const form = document.getElementById('bookingForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const selectedPlan = document.getElementById('selectedPlan');
+  const selectedPackage = document.getElementById('selectedPackage');
+  const dateInput = document.getElementById('date');
+  const menuBtn = document.getElementById('menuBtn');
+  const mainNav = document.getElementById('mainNav');
+
+  function openBooking(plan=''){
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open');
+    if(plan){
+      selectedPackage.value = plan;
+      selectedPlan.textContent = 'Selected package: ' + plan;
+      selectedPlan.style.display = 'block';
+    } else {
+      selectedPackage.value = 'Not specified';
+      selectedPlan.style.display = 'none';
+    }
+  }
+
+  function closeBooking(){
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+  }
+
+  document.querySelectorAll('.book-call').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.preventDefault();
+      openBooking(btn.dataset.plan || '');
+      mainNav.classList.remove('mobile-open');
+    });
+  });
+
+  closeModal.addEventListener('click', closeBooking);
+  successClose.addEventListener('click', closeBooking);
+  modal.addEventListener('click',e=>{ if(e.target === modal) closeBooking(); });
+
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeBooking(); });
+
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth()+1).padStart(2,'0');
+  const dd = String(today.getDate()).padStart(2,'0');
+  dateInput.min = `${yyyy}-${mm}-${dd}`;
+
+  form.addEventListener('submit', async e=>{
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending Request...';
+
+    try{
+      const response = await fetch(form.action,{
+        method:'POST',
+        body:new FormData(form),
+        headers:{'Accept':'application/json'}
+      });
+
+      if(response.ok){
+        formArea.style.display='none';
+        successArea.style.display='block';
+        form.reset();
+        selectedPackage.value='Not specified';
+      }else{
+        throw new Error('Submission failed');
+      }
+    }catch(err){
+      alert('We could not submit the request right now. Please try again or contact us on WhatsApp.');
+    }finally{
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Request My Free Call';
+    }
+  });
+
+  menuBtn.addEventListener('click',()=>{
+    mainNav.classList.toggle('mobile-open');
+  });
+</script>
+</body>
+</html>
