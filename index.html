@@ -156,22 +156,43 @@
     .contact-info a:hover{color:#fff}
 
     footer{background:#050f22;color:#8ea1bb;padding:30px 0}
-    .footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px}
-    
-    .social-links {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+    .foot{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  text-align:center;
 }
 
-.social-links a {
-  color: #93a5bd;
-  text-decoration: none;
-  font-weight: 700;
+.social-links{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  margin-bottom:4px;
 }
 
-.social-links a:hover {
-  color: #fff;
+.social-links a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:48px;
+  height:48px;
+  color:#93a5bd;
+  text-decoration:none;
+  transition:all .2s ease;
+}
+
+.social-links svg{
+  width:34px;
+  height:34px;
+  fill:currentColor;
+}
+
+.social-links a:hover{
+  color:#fff;
+  transform:translateY(-2px);
 }
     footer strong{color:#fff}
 
@@ -434,25 +455,36 @@
 
 <footer>
   <div class="wrap foot">
-    <div>© 2026 SalesBridge. All rights reserved.</div>
 
+    <!-- Social Media Icons -->
     <div class="social-links">
+
+      <!-- LinkedIn -->
       <a href="https://www.linkedin.com/company/salesbridgehq/"
          target="_blank"
          rel="noopener noreferrer"
          aria-label="SalesBridge on LinkedIn">
-        LinkedIn
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM3.56 20.45h3.57V9H3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.21 0 22.22 0z"/>
+        </svg>
       </a>
 
+      <!-- Instagram -->
       <a href="https://www.instagram.com/salesbridgehq/"
          target="_blank"
          rel="noopener noreferrer"
          aria-label="SalesBridge on Instagram">
-        Instagram
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.22.41.5.18.92.42 1.32.82.4.4.64.82.82 1.32.16.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.22-.18.5-.42.92-.82 1.32-.4.4-.82.64-1.32.82-.42.16-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.22-.41-.5-.18-.92-.42-1.32-.82-.4-.4-.64-.82-.82-1.32-.16-.42-.36-1.05-.41-2.22C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.22.18-.5.42-.92.82-1.32.4-.4.82-.64 1.32-.82.42-.16 1.05-.36 2.22-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.75 0 8.33.01 7.05.07 5.77.13 4.9.33 4.14.62a4.92 4.92 0 0 0-1.79 1.17A4.92 4.92 0 0 0 1.18 3.58C.89 4.34.69 5.21.63 6.49.57 7.77.56 8.19.56 11.44s.01 3.67.07 4.95c.06 1.28.26 2.15.55 2.91.3.77.7 1.42 1.17 1.89.47.47 1.12.87 1.89 1.17.76.29 1.63.49 2.91.55 1.28.06 1.7.07 4.95.07s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.55.77-.3 1.42-.7 1.89-1.17.47-.47.87-1.12 1.17-1.89.29-.76.49-1.63.55-2.91.06-1.28.07-1.7.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.55-2.91a4.92 4.92 0 0 0-1.17-1.79A4.92 4.92 0 0 0 19.86.62c-.76-.29-1.63-.49-2.91-.55C15.67.01 15.25 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.41-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/>
+        </svg>
       </a>
+
     </div>
 
+    <div>© 2026 SalesBridge. All rights reserved.</div>
+
     <div>Connecting Businesses. Creating Opportunities.</div>
+
   </div>
 </footer>
 
